@@ -1,0 +1,84 @@
+:root{
+    --text:#f2f2f3; --muted:#cfcfd3; --card: #ffffff10;
+    --shadow:0 10px 35px rgba(0,0,0,.35);
+  
+    /* Akzente je Kategorie */
+    --akzent-blueten:#ffcba4;
+    --akzent-wasser:#93c5fd;
+    --akzent-pilze:#86efac;
+    --akzent-about:#e5e7eb;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0; font:500 16px/1.6 system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif; color:var(--text)}
+img{max-width:100%; display:block}
+a{text-decoration:none; color:inherit}
+  
+  
+body.home{
+    background: url("../images/bg_start.jpg") center/cover no-repeat fixed;
+    position: relative;
+}
+body.home::before{
+    content:""; position:fixed; inset:0;
+    background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.55));
+}
+
+.seite-wasser {
+    background: linear-gradient(to bottom, #f9d99f, #4a6fa5);
+    color: #fff;
+}
+.seite-pilze {
+    background: linear-gradient(to bottom, #584b39, #2c261f);
+    color: #eee;
+}
+.haupttitel{font-weight:800; letter-spacing:.3px; margin:.2em 0}
+.untertitel{color:var(--muted); margin:0 0 1rem}
+.zentriert{max-width:980px; margin:0 auto; padding:16px}
+.kachelraster{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; width:min(980px,92vw); margin:18px auto}
+.kachel{
+  display:grid; place-items:center; text-align:center; padding:18px 16px; height:100px;
+  background:var(--card); border:1px solid #ffffff1a; backdrop-filter:blur(6px);
+  border-radius:16px; box-shadow:var(--shadow); font-weight:700;
+  transition:transform .18s ease, background .2s ease, border-color .2s ease;
+}
+.kachel:hover{transform:translateY(-3px); background:#ffffff18; border-color:#ffffff33}
+.kachel-blueten{ outline:2px solid color-mix(in srgb,var(--akzent-blueten) 60%, transparent); outline-offset:-6px }
+.kachel-wasser { outline:2px solid color-mix(in srgb,var(--akzent-wasser) 60%,  transparent); outline-offset:-6px }
+.kachel-pilze  { outline:2px solid color-mix(in srgb,var(--akzent-pilze)  60%,  transparent); outline-offset:-6px }
+.kachel-projekt{ outline:2px solid color-mix(in srgb,var(--akzent-about)  60%,  transparent); outline-offset:-6px }
+
+@media (max-width:960px){ .kachelraster{grid-template-columns:repeat(2,1fr)} }
+@media (max-width:520px){ .kachelraster{grid-template-columns:1fr} .kachel{height:auto; padding:16px} }
+
+.slider{position:relative; max-width:980px; margin:0 auto; overflow:hidden; border-radius:16px; box-shadow:0 8px 35px rgba(0,0,0,.15)}
+.bilder{display:flex; transition:transform .6s ease}
+.bilder img{width:100%; flex-shrink:0; object-fit:cover}
+.pfeil{
+  position:absolute; top:50%; transform:translateY(-50%); border:none; cursor:pointer;
+  font-size:2rem; padding:.3em .5em; border-radius:50%; background:rgba(255,255,255,.65)
+}
+.pfeil:hover{background:rgba(255,255,255,.85)}
+.links{left:10px} .rechts{right:10px}
+
+/* optional: Dots */
+.dots{position:absolute; left:0; right:0; bottom:10px; display:flex; gap:8px; justify-content:center}
+.dot{width:9px; height:9px; border-radius:50%; background:#ffffff55; border:0}
+.dot.aktiv{background:#fff}
+
+.mt-24{margin-top:24px} .mb-24{margin-bottom:24px}
+.center{text-align:center}
+body.home{
+    background: url("../images/bg_start.jpg") center/cover no-repeat fixed;
+}
+body.home::before{
+    content:""; position:fixed; inset:0;
+    background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.55));
+}
+
+body.seite-blueten{ background: radial-gradient(circle at center, #f9f3ef, #e6d8d0); color:#332 }
+body.seite-blueten .haupttitel{ color:#2a1d18 }
+body.seite-blueten .untertitel{ color:#5a4740 }
+body.seite-wasser{ background: linear-gradient(to bottom, #f6cf8f, #567aa7 60%, #1c2e46); }
+body.seite-pilze{ background: linear-gradient(180deg, #2c261f, #3c342a 60%, #0f0e0c); }
+body.seite-about{ background:#0f0f10; }
